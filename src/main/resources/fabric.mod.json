@@ -1,0 +1,39 @@
+{
+  "schemaVersion": 1,
+  "id": "dangerousstonecutter",
+  "version": "${version}",
+  "name": "Dangerous Stone Cutter",
+  "description": "This mod is take damage on the stone cutter.",
+  "authors": [
+    "MORIMORI0317!"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/dangerous-stone-cutter-fabric",
+    "sources": "https://github.com/MORIMORI0317/DangerousStoneCutter",
+    "issues": "https://github.com/MORIMORI0317/DangerousStoneCutter/issues"
+  },
+  "license": "LGPL v3",
+  "icon": "assets/dangerousstonecutter/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.morimori.dsc.DangerousStoneCutter"
+    ],
+    "modmenu": [
+      "net.morimori.dsc.integration.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "dangerousstonecutter.mixins.json"
+  ],
+  "accessWidener": "dangerousstonecutter.accesswidener",
+  "depends": {
+    "fabricloader": ">=0.11.3",
+    "fabric": "*",
+    "minecraft": "1.17.x",
+    "java": ">=16"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}

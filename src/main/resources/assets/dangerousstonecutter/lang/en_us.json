@@ -1,0 +1,6 @@
+{
+  "death.attack.cutting": "%s has been cut",
+  "text.autoconfig.dangerousstonecutter.title": "Dangerous Stone Cutter Config",
+  "text.autoconfig.dangerousstonecutter.option.damage": "Damage",
+  "text.autoconfig.dangerousstonecutter.option.AIJudgmentDangerous": "MOB avoids stone cutters"
+}
