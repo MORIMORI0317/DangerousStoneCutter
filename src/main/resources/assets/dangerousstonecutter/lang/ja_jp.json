@@ -1,6 +1,9 @@
 {
-  "death.attack.cutting": "%s は切断された",
-  "text.autoconfig.dangerousstonecutter.title": "Dangerous Stone Cutterの設定",
-  "text.autoconfig.dangerousstonecutter.option.damage": "ダメージ",
-  "text.autoconfig.dangerousstonecutter.option.AIJudgmentDangerous": "MOBがストーンカッターを避けるかどうか"
+
+//death messege
+  "death.attack.cutting": "%s は切断された"
+  
+  
+  
+  
 }
