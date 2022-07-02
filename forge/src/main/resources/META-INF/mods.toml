@@ -1,0 +1,32 @@
+modLoader = "javafml"
+loaderVersion = "[40,)"
+issueTrackerURL = "https://github.com/MORIMORI0317/DangerousStoneCutter/issues"
+license = "GNU LGPLv3"
+
+[[mods]]
+modId = "dangerousstonecutter"
+version = "${version}"
+displayName = "Dangerous Stone Cutter"
+authors = "MORIMORI0317"
+description = '''
+This mod makes the stone cutter dangerous.
+The ikisugi stone cutter mod...
+'''
+logoFile = "icon.png"
+
+[modproperties.dangerousstonecutter]
+catalogueImageIcon = "icon.png"
+
+[[dependencies.dangerousstonecutter]]
+modId = "forge"
+mandatory = true
+versionRange = "[40,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.dangerousstonecutter]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.18.2,)"
+ordering = "NONE"
+side = "BOTH"

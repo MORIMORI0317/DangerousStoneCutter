@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "dangerousstonecutter",
+  "version": "${version}",
+  "name": "Dangerous Stone Cutter",
+  "description": "This mod makes the stone cutter dangerous.\nThe ikisugi stone cutter mod...",
+  "authors": [
+    "MORIMORI0317"
+  ],
+  "contact": {
+    "homepage": "https://www.curseforge.com/minecraft/mc-mods/dangerousstonecutter",
+    "sources": "https://github.com/MORIMORI0317/DangerousStoneCutter",
+    "issues": "https://github.com/MORIMORI0317/DangerousStoneCutter/issues"
+  },
+  "license": "GNU LGPLv3",
+  "icon": "assets/dangerousstonecutter/icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.morimori0317.dsc.fabric.DangerousStoneCutterFabric"
+    ],
+    "client": [
+      "net.morimori0317.dsc.fabric.client.DangerousStoneCutterClientFabric"
+    ],
+    "modmenu": [
+      "net.morimori0317.dsc.fabric.integration.ModMenuIntegration"
+    ]
+  },
+  "mixins": [
+    "dangerousstonecutter.mixins.json",
+    "dangerousstonecutter-common.mixins.json"
+  ],
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.18.2"
+  }
+}
