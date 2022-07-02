@@ -1,0 +1,8 @@
+{
+  "death.attack.cutting": "%1$s は切断された",
+  "death.attack.cutting.player": "%1$s は %2$s よって切断された",
+  "text.autoconfig.dangerousstonecutter.title": "Dangerous Stone Cutterの設定",
+  "text.autoconfig.dangerousstonecutter.option.damage": "ダメージ量",
+  "text.autoconfig.dangerousstonecutter.option.enableJudgmentDangerous": "危険として判断",
+  "text.autoconfig.dangerousstonecutter.option.enableBloodParticle": "血液のパーティクルを表示"
+}

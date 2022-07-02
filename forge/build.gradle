@@ -13,6 +13,8 @@ loom {
     forge {
         convertAccessWideners = true
         extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+        mixinConfig "dangerousstonecutter.mixins.json"
+        mixinConfig "dangerousstonecutter-common.mixins.json"
     }
 }
 
@@ -23,11 +25,16 @@ configurations {
     runtimeClasspath.extendsFrom common
     developmentForge.extendsFrom common
 }
-
+repositories {
+    maven {
+        url "https://cursemaven.com"
+    }
+}
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
     // Remove the next line if you don't want to depend on the API
-  //  modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    //  modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
+    modImplementation "curse.maven:ctm-331983:3819992"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }

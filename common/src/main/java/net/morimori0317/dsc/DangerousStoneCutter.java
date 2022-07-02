@@ -1,6 +1,7 @@
 package net.morimori0317.dsc;
 
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -26,8 +27,10 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StonecutterBlock;
+import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
+import net.minecraft.world.phys.Vec3;
 import net.morimori0317.dsc.api.DangerousStoneCutterAPI;
 import net.morimori0317.dsc.explatform.DSCExpectPlatform;
 
@@ -38,9 +41,34 @@ public class DangerousStoneCutter {
     public static final DamageSource CUTTING = new CuttingDamageSource();
 
     public static void init() {
+
     }
 
-    public static void huntStoneCutterDamage(Level level, BlockPos blockPos, Entity entity) {
+    public static void huntStoneCutterDamage(Level level, BlockState blockState, BlockPos blockPos, Entity entity) {
+        var shape = blockState.getCollisionShape(level, blockPos);
+
+        double enMaxX = entity.getBoundingBox().maxX;
+        double enMaxZ = entity.getBoundingBox().maxZ;
+        double enMinX = entity.getBoundingBox().minX;
+        double enMinZ = entity.getBoundingBox().minZ;
+
+        double shMaxX = shape.max(Direction.Axis.X) + blockPos.getX();
+        double shMaxZ = shape.max(Direction.Axis.Z) + blockPos.getZ();
+        double shMinX = shape.min(Direction.Axis.X) + blockPos.getX();
+        double shMinZ = shape.min(Direction.Axis.Z) + blockPos.getZ();
+
+        boolean flgIEX = enMaxX < shMaxX && enMaxX > shMinX || enMinX < shMaxX && enMinX > shMinX;
+        boolean flgIEZ = enMaxZ < shMaxZ && enMaxZ > shMinZ || enMinZ < shMaxZ && enMinZ > shMinZ;
+        boolean flgISX = shMaxX < enMaxX && shMaxX > enMinX || shMinX < enMaxX && shMinX > enMinX;
+        boolean flgISZ = shMaxZ < enMaxZ && shMaxZ > enMinZ || shMinZ < enMaxZ && shMinZ > enMinZ;
+
+        if (!(flgIEX || flgISX) || !(flgIEZ || flgISZ))
+            return;
+
+        if (entity.position().y() < shape.max(Direction.Axis.Y) + blockPos.getY())
+            return;
+
+        entity.makeStuckInBlock(blockState, new Vec3(0.800000011920929, 0.75, 0.800000011920929));
         if (!level.isClientSide()) {
             if (entity instanceof ItemEntity) return;
             boolean flg = entity.isInvisible() || entity.isInvulnerableTo(CUTTING);
@@ -49,8 +77,8 @@ public class DangerousStoneCutter {
             entity.hurt(CUTTING, getConfig().getDamage());
             if (flg) return;
             level.playSound(null, blockPos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 0.3f, 1f);
-            if (entity instanceof LivingEntity)
-                ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 2, false, false));
+            //  if (entity instanceof LivingEntity)
+            //      ((LivingEntity) entity).addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 20, 2, false, false));
 
             if (getConfig().isEnableBloodParticle()) {
                 LevelChunk lch = (LevelChunk) level.getChunk(entity.blockPosition());
@@ -60,6 +88,8 @@ public class DangerousStoneCutter {
     }
 
     public static boolean isSupportStoneCutter(BlockState state) {
+        if (DSCExpectPlatform.isSupportStoneCutter(state))
+            return true;
         return state.getBlock() instanceof StonecutterBlock;
     }
 

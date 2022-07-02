@@ -5,6 +5,7 @@ import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerChunkCache;
+import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.morimori0317.dsc.DSCConfig;
 import net.morimori0317.dsc.fabric.DangerousStoneCutterFabric;
@@ -23,5 +24,9 @@ public class DSCExpectPlatformImpl {
 
     public static DSCConfig getConfig() {
         return DangerousStoneCutterFabric.getConfig();
+    }
+
+    public static boolean isSupportStoneCutter(BlockState state) {
+        return false;
     }
 }

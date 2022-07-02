@@ -9,6 +9,7 @@ public class DSCConfigForge implements DSCConfig {
     private static ForgeConfigSpec.ConfigValue<Float> DAMAGE;
     private static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BLOOD_PARTICLE;
     private static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_JUDGMENT_DANGEROUS;
+    private static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_CORAIL_WOODCUTTER_INTEGRATION;
 
     public static void init() {
         var serverConfig = buildServerConfig(new ForgeConfigSpec.Builder()).build();
@@ -27,6 +28,7 @@ public class DSCConfigForge implements DSCConfig {
     private static ForgeConfigSpec.Builder buildCommonConfig(ForgeConfigSpec.Builder builder) {
         ENABLE_BLOOD_PARTICLE = builder.define("Enable blood particle", DSCConfig.DEFAULT.isEnableBloodParticle());
         ENABLE_JUDGMENT_DANGEROUS = builder.define("Enable judgment dangerous", DSCConfig.DEFAULT.isEnableJudgmentDangerous());
+        ENABLE_CORAIL_WOODCUTTER_INTEGRATION = builder.define("Enable corail woodcutter integration", true);
         return builder;
     }
 
@@ -43,5 +45,9 @@ public class DSCConfigForge implements DSCConfig {
     @Override
     public boolean isEnableBloodParticle() {
         return ENABLE_BLOOD_PARTICLE.get();
+    }
+
+    public boolean isEnableCorailWoodcutterIntegration() {
+        return ENABLE_CORAIL_WOODCUTTER_INTEGRATION.get();
     }
 }

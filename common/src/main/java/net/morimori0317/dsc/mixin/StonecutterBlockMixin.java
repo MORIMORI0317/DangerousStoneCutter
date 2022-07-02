@@ -18,6 +18,6 @@ public abstract class StonecutterBlockMixin extends Block {
     @Override
     public void entityInside(BlockState blockState, Level level, BlockPos blockPos, Entity entity) {
         super.entityInside(blockState, level, blockPos, entity);
-        DangerousStoneCutter.huntStoneCutterDamage(level, blockPos, entity);
+        DangerousStoneCutter.huntStoneCutterDamage(level, blockState, blockPos, entity);
     }
 }

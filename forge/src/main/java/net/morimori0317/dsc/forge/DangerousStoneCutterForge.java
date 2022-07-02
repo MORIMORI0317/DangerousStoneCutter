@@ -7,7 +7,7 @@ import net.morimori0317.dsc.forge.networking.DSCPacketsForge;
 
 @Mod(DangerousStoneCutter.MODID)
 public class DangerousStoneCutterForge {
-    public static final DSCConfig CONFIG = new DSCConfigForge();
+    public static final DSCConfigForge CONFIG = new DSCConfigForge();
 
     public DangerousStoneCutterForge() {
         DSCConfigForge.init();
