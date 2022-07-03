@@ -2,10 +2,12 @@
   "required": true,
   "package": "net.morimori0317.dsc.forge.mixin",
   "compatibilityLevel": "JAVA_17",
+  "minVersion": "0.8",
   "client": [
   ],
   "mixins": [
-    "WoodcutterBlockMixin"
+    "WoodcutterBlockMixin",
+    "RadiumPathNodeDefaultsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

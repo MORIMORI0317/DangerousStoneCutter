@@ -8,11 +8,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.entity.animal.horse.SkeletonHorse;
@@ -27,7 +23,6 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.StonecutterBlock;
-import net.minecraft.world.level.block.SweetBerryBushBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.phys.Vec3;
@@ -38,7 +33,6 @@ import java.util.function.Function;
 
 public class DangerousStoneCutter {
     public static final String MODID = "dangerousstonecutter";
-    public static final DamageSource CUTTING = new CuttingDamageSource();
 
     public static void init() {
 
@@ -71,10 +65,11 @@ public class DangerousStoneCutter {
         entity.makeStuckInBlock(blockState, new Vec3(0.800000011920929, 0.75, 0.800000011920929));
         if (!level.isClientSide()) {
             if (entity instanceof ItemEntity) return;
-            boolean flg = entity.isInvisible() || entity.isInvulnerableTo(CUTTING);
+            var dmg = new CuttingDamageSource(blockState);
+            boolean flg = entity.isInvisible() || entity.isInvulnerableTo(dmg);
             if (entity instanceof Player player)
                 flg |= player.getAbilities().invulnerable;
-            entity.hurt(CUTTING, getConfig().getDamage());
+            entity.hurt(dmg, getConfig().getDamage());
             if (flg) return;
             level.playSound(null, blockPos, SoundEvents.UI_STONECUTTER_TAKE_RESULT, SoundSource.BLOCKS, 0.3f, 1f);
             //  if (entity instanceof LivingEntity)

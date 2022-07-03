@@ -1,7 +1,6 @@
 package net.morimori0317.dsc.forge;
 
 import net.minecraftforge.fml.common.Mod;
-import net.morimori0317.dsc.DSCConfig;
 import net.morimori0317.dsc.DangerousStoneCutter;
 import net.morimori0317.dsc.forge.networking.DSCPacketsForge;
 

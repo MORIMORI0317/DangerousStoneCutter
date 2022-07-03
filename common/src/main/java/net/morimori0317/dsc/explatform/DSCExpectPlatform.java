@@ -21,4 +21,10 @@ public class DSCExpectPlatform {
     public static boolean isSupportStoneCutter(BlockState state) {
         throw new AssertionError();
     }
+
+    @ExpectPlatform
+    public static boolean isLithiumLoaded() {
+        throw new AssertionError();
+    }
+
 }

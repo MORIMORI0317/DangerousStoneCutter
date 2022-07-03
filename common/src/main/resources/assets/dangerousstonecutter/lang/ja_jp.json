@@ -1,6 +1,6 @@
 {
-  "death.attack.cutting": "%1$s は切断された",
-  "death.attack.cutting.player": "%1$s は %2$s よって切断された",
+  "death.attack.cutting": "%1$sは%2$sで切り刻まれた",
+  "death.attack.cutting.player": "%1$sは%2$sから逃げようとして%3$sで切り刻まれた",
   "text.autoconfig.dangerousstonecutter.title": "Dangerous Stone Cutterの設定",
   "text.autoconfig.dangerousstonecutter.option.damage": "ダメージ量",
   "text.autoconfig.dangerousstonecutter.option.enableJudgmentDangerous": "危険として判断",
