@@ -11,12 +11,14 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.IronGolem;
+import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.animal.horse.SkeletonHorse;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.*;
+import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -94,6 +96,12 @@ public class DangerousStoneCutter {
             var r = bloodParticleListener.apply(entity);
             if (r != null) return r;
         }
+
+        if (entity instanceof Allay)
+            return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.AMETHYST_BLOCK.defaultBlockState());
+
+        if (entity instanceof Warden)
+            return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.SCULK.defaultBlockState());
 
         if (entity instanceof WitherSkeleton || entity instanceof WitherBoss)
             return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.OBSIDIAN.defaultBlockState());

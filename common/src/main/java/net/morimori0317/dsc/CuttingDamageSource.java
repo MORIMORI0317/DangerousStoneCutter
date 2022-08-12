@@ -1,7 +1,6 @@
 package net.morimori0317.dsc;
 
 import net.minecraft.network.chat.Component;
-import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.level.block.state.BlockState;
@@ -20,6 +19,6 @@ public class CuttingDamageSource extends DamageSource {
         String string = "death.attack." + this.msgId;
         String string2 = string + ".player";
         var bname = blockState.getBlock().getName();
-        return livingEntity2 != null ? new TranslatableComponent(string2, livingEntity.getDisplayName(), livingEntity2.getDisplayName(), bname) : new TranslatableComponent(string, livingEntity.getDisplayName(), bname);
+        return livingEntity2 != null ? Component.translatable(string2, livingEntity.getDisplayName(), livingEntity2.getDisplayName(), bname) : Component.translatable(string, livingEntity.getDisplayName(), bname);
     }
 }

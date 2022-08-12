@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[40,)"
+loaderVersion = "[41,)"
 issueTrackerURL = "https://github.com/MORIMORI0317/DangerousStoneCutter/issues"
 license = "GNU LGPLv3"
 
@@ -20,13 +20,13 @@ catalogueImageIcon = "icon.png"
 [[dependencies.dangerousstonecutter]]
 modId = "forge"
 mandatory = true
-versionRange = "[40,)"
+versionRange = "[41,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.dangerousstonecutter]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18.2,)"
+versionRange = "[1.19,)"
 ordering = "NONE"
 side = "BOTH"

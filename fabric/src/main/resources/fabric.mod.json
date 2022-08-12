@@ -3,7 +3,7 @@
   "id": "dangerousstonecutter",
   "version": "${version}",
   "name": "Dangerous Stone Cutter",
-  "description": "This mod makes the stone cutter dangerous.\nThe ikisugi stone cutter mod...",
+  "description": "This mod makes the stone cutter dangerous.\\nThe ikisugi stone cutter mod...",
   "authors": [
     "MORIMORI0317"
   ],
@@ -21,9 +21,6 @@
     ],
     "client": [
       "net.morimori0317.dsc.fabric.client.DangerousStoneCutterClientFabric"
-    ],
-    "modmenu": [
-      "net.morimori0317.dsc.fabric.integration.ModMenuIntegration"
     ]
   },
   "mixins": [
@@ -32,6 +29,6 @@
   ],
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.18.2"
+    "minecraft": ">=1.19"
   }
 }
