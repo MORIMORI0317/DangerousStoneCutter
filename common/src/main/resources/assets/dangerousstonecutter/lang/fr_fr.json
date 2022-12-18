@@ -1,0 +1,8 @@
+{
+  "death.attack.cutting": "%1$s a été coupé dans un %2$s",
+  "death.attack.cutting.player": "%1$s a été coupé en %3$s en essayant d'échapper à %2$s",
+  "text.autoconfig.dangerousstonecutter.title": "Configuration Dangerous Stone Cutter",
+  "text.autoconfig.dangerousstonecutter.option.damage": "Montant des dégâts",
+  "text.autoconfig.dangerousstonecutter.option.enableJudgmentDangerous": "Activer le jugement dangereux",
+  "text.autoconfig.dangerousstonecutter.option.enableBloodParticle": "Activation de particules de sang"
+}
