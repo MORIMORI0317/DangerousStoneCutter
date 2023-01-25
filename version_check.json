@@ -1,0 +1,25 @@
+{
+  "homepage": "https://github.com/MORIMORI0317/DangerousStoneCutter/releases",
+  "1.19": {
+    "1.7.2": "Fixed\n- Fixed an issue where server configs were not loading correctly(Forge only)\n"
+  },
+  "1.19.1": {
+    "1.7.2": "Fixed\n- Fixed an issue where server configs were not loading correctly(Forge only)\n"
+  },
+  "1.19.2": {
+    "1.7.2": "Fixed\n- Fixed an issue where server configs were not loading correctly(Forge only)\n"
+  },
+  "1.19.3": {
+    "1.7.2": "Fixed\n- Fixed an issue where server configs were not loading correctly(Forge only)\n"
+  },
+  "promos": {
+    "1.19-latest": "1.7.2",
+    "1.19-recommended": "1.7.2",
+    "1.19.1-latest": "1.7.2",
+    "1.19.1-recommended": "1.7.2",
+    "1.19.2-latest": "1.7.2",
+    "1.19.2-recommended": "1.7.2",
+    "1.19.3-latest": "1.7.2",
+    "1.19.3-recommended": "1.7.2"
+  }
+}
