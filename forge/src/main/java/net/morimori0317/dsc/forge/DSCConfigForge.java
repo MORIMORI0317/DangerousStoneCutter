@@ -6,7 +6,7 @@ import net.minecraftforge.fml.config.ModConfig;
 import net.morimori0317.dsc.DSCConfig;
 
 public class DSCConfigForge implements DSCConfig {
-    private static ForgeConfigSpec.ConfigValue<Float> DAMAGE;
+    private static ForgeConfigSpec.ConfigValue<Double> DAMAGE;
     private static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_BLOOD_PARTICLE;
     private static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_JUDGMENT_DANGEROUS;
     private static ForgeConfigSpec.ConfigValue<Boolean> ENABLE_CORAIL_WOODCUTTER_INTEGRATION;
@@ -20,7 +20,7 @@ public class DSCConfigForge implements DSCConfig {
     }
 
     private static ForgeConfigSpec.Builder buildServerConfig(ForgeConfigSpec.Builder builder) {
-        DAMAGE = builder.define("Cutting damage", DSCConfig.DEFAULT.getDamage());
+        DAMAGE = builder.define("Cutting damage", (double) DSCConfig.DEFAULT.getDamage());
         return builder;
     }
 
@@ -34,7 +34,7 @@ public class DSCConfigForge implements DSCConfig {
 
     @Override
     public float getDamage() {
-        return DAMAGE.get();
+        return (float) (double) DAMAGE.get();
     }
 
     @Override
