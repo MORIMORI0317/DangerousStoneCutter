@@ -14,13 +14,19 @@ Changelog to track updates for this mod.
 ### Removed
 
 ### Fixed
-- Port MC1.19.4
+
 ### Security
+
+## [1.8.0] - 2023-03-24
+
+### Fixed
+- Port MC1.19.4
 
 ## [1.7.2] - 2023-01-25
 
 ### Fixed
 - Fixed an issue where server configs were not loading correctly(Forge only)
 
-[Unreleased]: https://github.com/MORIMORI0317/DangerousStoneCutter/compare/v1.7.2...HEAD
+[Unreleased]: https://github.com/MORIMORI0317/DangerousStoneCutter/compare/v1.8.0...HEAD
+[1.8.0]: https://github.com/MORIMORI0317/DangerousStoneCutter/compare/v1.7.2...v1.8.0
 [1.7.2]: https://github.com/MORIMORI0317/DangerousStoneCutter/commits/v1.7.2
