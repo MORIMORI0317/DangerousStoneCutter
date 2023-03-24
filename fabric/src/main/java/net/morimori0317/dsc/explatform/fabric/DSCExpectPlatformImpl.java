@@ -2,7 +2,6 @@ package net.morimori0317.dsc.explatform.fabric;
 
 import io.netty.buffer.Unpooled;
 import net.fabricmc.fabric.api.networking.v1.ServerPlayNetworking;
-import net.fabricmc.loader.api.FabricLoader;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerChunkCache;
@@ -27,11 +26,8 @@ public class DSCExpectPlatformImpl {
         return DangerousStoneCutterFabric.getConfig();
     }
 
-    public static boolean isSupportStoneCutter(BlockState state) {
-        return false;
-    }
-
     public static boolean isLithiumLoaded() {
-        return FabricLoader.getInstance().isModLoaded("lithium");
+        return false;
+        // return FabricLoader.getInstance().isModLoaded("lithium");
     }
 }

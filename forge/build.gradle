@@ -1,7 +1,7 @@
 plugins {
     id "com.github.johnrengelman.shadow" version "7.1.2"
     id 'com.matthewprenger.cursegradle' version '1.4.0'
-    id "com.modrinth.minotaur" version "2.1.2"
+    id "com.modrinth.minotaur" version "2.4.4"
 }
 
 architectury {
@@ -31,14 +31,9 @@ configurations {
 
 dependencies {
     forge "net.minecraftforge:forge:${rootProject.forge_version}"
-    // Remove the next line if you don't want to depend on the API
-  //  modApi "dev.architectury:architectury-forge:${rootProject.architectury_version}"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
-
-    modImplementation "curse.maven:ctm-331983:3894871"//CorailWoodcutter
-    modCompileOnlyApi "curse.maven:ctm-570017:3857819"//Radium
 }
 
 processResources {

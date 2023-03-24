@@ -6,8 +6,6 @@
   "client": [
   ],
   "mixins": [
-    "WoodcutterBlockMixin",
-    "RadiumPathNodeDefaultsMixin"
   ],
   "injectors": {
     "defaultRequire": 1

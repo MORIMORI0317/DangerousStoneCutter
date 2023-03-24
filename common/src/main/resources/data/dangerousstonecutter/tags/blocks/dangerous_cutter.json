@@ -1,0 +1,9 @@
+{
+  "values": [
+    "minecraft:stonecutter",
+    {
+      "id": "#corail_woodcutter:woodcutters",
+      "required": false
+    }
+  ]
+}

@@ -6,8 +6,13 @@ import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ItemParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.TagKey;
+import net.minecraft.world.damagesource.DamageType;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.IronGolem;
@@ -23,8 +28,8 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.StonecutterBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.chunk.LevelChunk;
 import net.minecraft.world.phys.Vec3;
@@ -35,9 +40,15 @@ import java.util.function.Function;
 
 public class DangerousStoneCutter {
     public static final String MODID = "dangerousstonecutter";
+    public static final ResourceKey<DamageType> CUTTING = ResourceKey.create(Registries.DAMAGE_TYPE, new ResourceLocation(MODID, "cutting"));
+    public static final TagKey<Block> DANGEROUS_CUTTER_TAG = bindTag(new ResourceLocation(MODID, "dangerous_cutter"));
 
     public static void init() {
 
+    }
+
+    private static TagKey<Block> bindTag(ResourceLocation location) {
+        return TagKey.create(Registries.BLOCK, location);
     }
 
     public static void huntStoneCutterDamage(Level level, BlockState blockState, BlockPos blockPos, Entity entity) {
@@ -67,7 +78,8 @@ public class DangerousStoneCutter {
         entity.makeStuckInBlock(blockState, new Vec3(0.800000011920929, 0.75, 0.800000011920929));
         if (!level.isClientSide()) {
             if (entity instanceof ItemEntity) return;
-            var dmg = new CuttingDamageSource(blockState);
+
+            var dmg = new CuttingDamageSource(level.registryAccess().registryOrThrow(Registries.DAMAGE_TYPE).getHolderOrThrow(CUTTING), blockState);
             boolean flg = entity.isInvisible() || entity.isInvulnerableTo(dmg);
             if (entity instanceof Player player)
                 flg |= player.getAbilities().invulnerable;
@@ -85,9 +97,7 @@ public class DangerousStoneCutter {
     }
 
     public static boolean isSupportStoneCutter(BlockState state) {
-        if (DSCExpectPlatform.isSupportStoneCutter(state))
-            return true;
-        return state.getBlock() instanceof StonecutterBlock;
+        return state.is(DANGEROUS_CUTTER_TAG);
     }
 
     public static ParticleOptions getBloodParticle(Entity entity) {
