@@ -8,7 +8,7 @@
     "MORIMORI0317"
   ],
   "contact": {
-    "homepage": "https://www.curseforge.com/minecraft/mc-mods/dangerousstonecutter",
+    "homepage": "https://modrinth.com/mod/dangerousstonecutter",
     "sources": "https://github.com/MORIMORI0317/DangerousStoneCutter",
     "issues": "https://github.com/MORIMORI0317/DangerousStoneCutter/issues"
   },
@@ -17,21 +17,20 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.morimori0317.dsc.fabric.DangerousStoneCutterFabric"
+      "net.morimori0317.dangerousstonecutter.fabric.DangerousStoneCutterFabric"
     ],
     "client": [
-      "net.morimori0317.dsc.fabric.client.DangerousStoneCutterClientFabric"
+      "net.morimori0317.dangerousstonecutter.fabric.client.DangerousStoneCutterFabricClient"
     ],
     "modmenu": [
-      "net.morimori0317.dsc.fabric.integration.ModMenuIntegration"
+      "net.morimori0317.dangerousstonecutter.fabric.integration.ModMenuIntegration"
     ]
   },
   "mixins": [
-    "dangerousstonecutter.mixins.json",
-    "dangerousstonecutter-common.mixins.json"
+    "dangerousstonecutter.mixins.json"
   ],
   "depends": {
-    "fabric": "*",
-    "minecraft": ">=1.19.4"
+    "minecraft": ">=1.21.1",
+    "fabric-api": "*"
   }
 }

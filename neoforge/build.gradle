@@ -6,7 +6,7 @@ plugins {
 
 architectury {
     platformSetupLoomIde()
-    fabric()
+    neoForge()
 }
 
 configurations {
@@ -16,7 +16,7 @@ configurations {
     }
     compileClasspath.extendsFrom common
     runtimeClasspath.extendsFrom common
-    developmentFabric.extendsFrom common
+    developmentNeoForge.extendsFrom common
 
     shadowBundle {
         canBeResolved = true
@@ -25,25 +25,23 @@ configurations {
 }
 
 repositories {
-    maven { url "https://maven.terraformersmc.com/releases/" }
+    maven {
+        name = 'NeoForged'
+        url = 'https://maven.neoforged.net/releases'
+    }
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
-
-    modImplementation "net.fabricmc.fabric-api:fabric-api:$rootProject.fabric_api_version"
+    neoForge "net.neoforged:neoforge:$rootProject.neoforge_version"
 
     common(project(path: ':common', configuration: 'namedElements')) { transitive false }
-    shadowBundle project(path: ':common', configuration: 'transformProductionFabric')
-
-    modApi "me.shedaniel.cloth:cloth-config-fabric:15.0.140"
-    modApi "com.terraformersmc:modmenu:11.0.4"
+    shadowBundle project(path: ':common', configuration: 'transformProductionNeoForge')
 }
 
 processResources {
     inputs.property 'version', project.version
 
-    filesMatching('fabric.mod.json') {
+    filesMatching('META-INF/neoforge.mods.toml') {
         expand version: project.version
     }
 }
@@ -55,14 +53,16 @@ shadowJar {
 
 remapJar {
     input.set shadowJar.archiveFile
+    
+    archiveClassifier.set(null)
     setArchivesBaseName("${rootProject.mod_id}-${project.name}-mc${rootProject.minecraft_version}")
 }
 
 def mainJar = file("${project.layout.buildDirectory.get().asFile}/libs/${rootProject.mod_id}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}.jar")
 def sourcesJar = file("${project.layout.buildDirectory.get().asFile}/libs/${rootProject.mod_id}-${project.name}-mc${rootProject.minecraft_version}-${project.mod_version}-sources.jar")
 def changeLogFile = file('../LATEST_CHANGELOG.md')
-def uploadMainName = "${rootProject.archives_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric"
-def uploadSourcesName = "${rootProject.archives_name}-${rootProject.minecraft_version}-${project.mod_version}-Fabric-sources"
+def uploadMainName = "${rootProject.archives_name}-${rootProject.minecraft_version}-${project.mod_version}-NeoForge"
+def uploadSourcesName = "${rootProject.archives_name}-${rootProject.minecraft_version}-${project.mod_version}-NeoForge-sources"
 
 task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
     if (System.getenv('curesforgeapikey') != null && "${project.curesforge_id}" != '') {
@@ -80,14 +80,10 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
 
         mainFile.addJavaVersion('Java 21')
 
-        mainFile.addModLoader('Fabric')
-        mainFile.addModLoader('Quilt')
+        mainFile.addModLoader('NeoForge')
 
         mainFile.addGameVersion('Client')
         mainFile.addGameVersion('Server')
-
-        mainFile.addRequirement("fabric-api")
-        mainFile.addOptional("cloth-config")
 
         def sourcesFile = mainFile.withAdditionalFile(sourcesJar)
         sourcesFile.displayName = uploadSourcesName
@@ -97,18 +93,13 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
 if (System.getenv('modrinthapikey') != null && "${modrinth_id}" != '') {
     modrinth {
         token = System.getenv('modrinthapikey')
-        projectId = "${project.modrinth_id}"
+        projectId = "${rootProject.modrinth_id}"
         versionName = uploadMainName
-        versionNumber = "${project.minecraft_version}-${project.mod_version}-Fabric"
+        versionNumber = "${rootProject.minecraft_version}-${project.mod_version}-NeoForge"
         versionType = "${project.release_type}"
         uploadFile = mainJar
         gameVersions = List.of(project.support_versions.split(","))
-        loaders = ["fabric", "quilt"]
-        dependencies {
-            required.project("P7dR8mSH") //Fabric API
-            optional.project("9s6osm5g") //Cloth Config API
-        }
+        loaders = ["neoforge"]
         changelog = changeLogFile.text
     }
 }
-

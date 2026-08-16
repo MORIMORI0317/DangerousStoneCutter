@@ -1,0 +1,16 @@
+{
+  "required": true,
+  "package": "net.morimori0317.dangerousstonecutter.mixin",
+  "compatibilityLevel": "JAVA_21",
+  "minVersion": "0.8",
+  "client": [
+  ],
+  "mixins": [
+    "BlockBehaviourBlockStateBaseMixin",
+    "EntityTypeMixin",
+    "WalkNodeEvaluatorMixin"
+  ],
+  "injectors": {
+    "defaultRequire": 1
+  }
+}

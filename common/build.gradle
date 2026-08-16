@@ -1,11 +1,17 @@
-architectury {
-    common(rootProject.enabled_platforms.split(","))
+plugins {
+    id 'org.jetbrains.kotlin.jvm'
 }
-
-loom {
-    accessWidenerPath = file("src/main/resources/dangerousstonecutter.accesswidener")
+architectury {
+    common rootProject.enabled_platforms.split(',')
 }
 
 dependencies {
-    modImplementation "net.fabricmc:fabric-loader:${rootProject.fabric_loader_version}"
+    modImplementation "net.fabricmc:fabric-loader:$rootProject.fabric_loader_version"
+    testImplementation 'org.jetbrains.kotlin:kotlin-test'
+}
+repositories {
+    mavenCentral()
+}
+kotlin {
+    jvmToolchain(21)
 }
