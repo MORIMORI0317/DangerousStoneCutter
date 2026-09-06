@@ -1,5 +1,10 @@
 {
   "homepage": "https://github.com/MORIMORI0317/DangerousStoneCutter/releases",
   "promos": {
+    "1.21.1-latest": "1.9.0",
+    "1.21.1-recommended": "1.9.0"
+  },
+  "1.21.1": {
+    "1.9.0": "Changed\n- Port MC1.21.1\n"
   }
 }
