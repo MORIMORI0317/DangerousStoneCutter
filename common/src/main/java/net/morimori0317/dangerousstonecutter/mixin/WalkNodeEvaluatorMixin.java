@@ -14,10 +14,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 @Mixin(WalkNodeEvaluator.class)
 public class WalkNodeEvaluatorMixin {
     @Inject(method = "getPathTypeFromState", at = @At("RETURN"), cancellable = true)
-    private static void getBlockPathTypeRaw(BlockGetter blockGetter, BlockPos blockPos, CallbackInfoReturnable<PathType> cir) {
-        BlockState blockState = blockGetter.getBlockState(blockPos);
+    private static void getPathTypeFromStateInject(BlockGetter level, BlockPos pos, CallbackInfoReturnable<PathType> cir) {
+        BlockState blockState = level.getBlockState(pos);
         if (DangerousStoneCutter.getConfig().isEnableMobAvoidStonecutter() && DangerousStoneCutter.isSupportStoneCutter(blockState)) {
-            cir.setReturnValue(PathType.DAMAGE_OTHER);
+            cir.setReturnValue(PathType.DAMAGING);
         }
     }
 }

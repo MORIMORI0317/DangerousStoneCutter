@@ -6,10 +6,9 @@ import net.morimori0317.dangerousstonecutter.networking.DSCPackets;
 
 public class DSCPacketsFabric {
     public static void init() {
-        PayloadTypeRegistry.playS2C().register(DSCPackets.BLOOD_PARTICLE_TYPE, DSCPackets.BLOOD_PARTICLE_CODEC);
-    }
-
-    public static void clientInit() {
-        ClientPlayNetworking.registerGlobalReceiver(DSCPackets.BLOOD_PARTICLE_TYPE, (payload, context) -> DSCPackets.onBloodParticlePacket(payload.entityId(), payload.blockPos()));
+        PayloadTypeRegistry.clientboundPlay().register(DSCPackets.BLOOD_PARTICLE_TYPE, DSCPackets.BLOOD_PARTICLE_CODEC);
+        ClientPlayNetworking.registerGlobalReceiver(DSCPackets.BLOOD_PARTICLE_TYPE, (payload, context) ->
+                DSCPackets.onBloodParticlePacket(context.player().level(), payload.entityId(), payload.blockPos())
+        );
     }
 }

@@ -10,10 +10,17 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 @Mixin(EntityType.class)
 public class EntityTypeMixin {
+
     @Inject(method = "isBlockDangerous", at = @At("RETURN"), cancellable = true)
-    private void isBlockDangerous(BlockState blockState, CallbackInfoReturnable<Boolean> cir) {
-        if (DangerousStoneCutter.getConfig().isEnableMobAvoidStonecutter() && DangerousStoneCutter.isSupportStoneCutter(blockState)) {
+    private void isBlockDangerousInject(BlockState state, CallbackInfoReturnable<Boolean> cir) {
+
+        if (cir.getReturnValue()) {
+            return;
+        }
+
+        if (DangerousStoneCutter.getConfig().isEnableMobAvoidStonecutter() && DangerousStoneCutter.isSupportStoneCutter(state)) {
             cir.setReturnValue(true);
         }
     }
+
 }

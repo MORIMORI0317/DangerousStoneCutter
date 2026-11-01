@@ -4,7 +4,6 @@ import me.shedaniel.autoconfig.AutoConfig;
 import me.shedaniel.autoconfig.ConfigData;
 import me.shedaniel.autoconfig.annotation.Config;
 import me.shedaniel.autoconfig.serializer.Toml4jConfigSerializer;
-import net.minecraft.client.gui.screens.Screen;
 import net.morimori0317.dangerousstonecutter.DSCConfig;
 import net.morimori0317.dangerousstonecutter.DangerousStoneCutter;
 
@@ -35,9 +34,5 @@ public class DSCConfigFabric implements ConfigData, DSCConfig {
 
     public static DSCConfigFabric createConfig() {
         return AutoConfig.register(DSCConfigFabric.class, Toml4jConfigSerializer::new).getConfig();
-    }
-
-    public static Screen createConfigScreen(Screen parent) {
-        return AutoConfig.getConfigScreen(DSCConfigFabric.class, parent).get();
     }
 }

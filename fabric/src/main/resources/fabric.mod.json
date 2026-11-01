@@ -19,9 +19,6 @@
     "main": [
       "net.morimori0317.dangerousstonecutter.fabric.DangerousStoneCutterFabric"
     ],
-    "client": [
-      "net.morimori0317.dangerousstonecutter.fabric.client.DangerousStoneCutterFabricClient"
-    ],
     "modmenu": [
       "net.morimori0317.dangerousstonecutter.fabric.integration.ModMenuIntegration"
     ]
@@ -30,7 +27,12 @@
     "dangerousstonecutter.mixins.json"
   ],
   "depends": {
-    "minecraft": ">=1.21.1",
+    "minecraft": ">=26.1.2",
     "fabric-api": "*"
+  },
+  "custom": {
+    "catalogue": {
+      "configFactory": "net.morimori0317.dangerousstonecutter.fabric.integration.CatalogueIntegration"
+    }
   }
 }

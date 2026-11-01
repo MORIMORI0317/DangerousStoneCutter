@@ -1,18 +1,18 @@
 package net.morimori0317.dangerousstonecutter.networking;
 
-import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.RegistryFriendlyByteBuf;
 import net.minecraft.network.codec.StreamCodec;
 import net.minecraft.network.protocol.common.custom.CustomPacketPayload;
-import net.minecraft.resources.ResourceLocation;
+import net.minecraft.resources.Identifier;
+import net.minecraft.world.level.Level;
 import net.morimori0317.dangerousstonecutter.DangerousStoneCutter;
 import org.jetbrains.annotations.NotNull;
 
 public class DSCPackets {
     public static final CustomPacketPayload.Type<BloodParticleMessage> BLOOD_PARTICLE_TYPE =
-            new CustomPacketPayload.Type<>(ResourceLocation.fromNamespaceAndPath(DangerousStoneCutter.MODID, "blood_particle"));
+            new CustomPacketPayload.Type<>(Identifier.fromNamespaceAndPath(DangerousStoneCutter.MODID, "blood_particle"));
 
     public static final StreamCodec<RegistryFriendlyByteBuf, BloodParticleMessage> BLOOD_PARTICLE_CODEC = new StreamCodec<>() {
         @Override
@@ -27,9 +27,8 @@ public class DSCPackets {
         }
     };
 
-    public static void onBloodParticlePacket(int entityId, BlockPos blockPos) {
+    public static void onBloodParticlePacket(Level level, int entityId, BlockPos blockPos) {
         if (!DangerousStoneCutter.getConfig().isEnableBloodParticle()) return;
-        var level = Minecraft.getInstance().level;
         if (level != null) {
             var entity = level.getEntity(entityId);
 

@@ -1,6 +1,6 @@
 {
-  "death.attack.cutting": "%1$sは%2$sで切り刻まれた",
-  "death.attack.cutting.player": "%1$sは%2$sから逃げようとして%3$sで切り刻まれた",
+  "death.attack.cutting": "%1$sは%2$sに切り刻まれた",
+  "death.attack.cutting.player": "%1$sは%2$sから逃げようとして%3$sに切り刻まれた",
   "text.autoconfig.dangerousstonecutter.title": "Dangerous Stone Cutterの設定",
   "text.autoconfig.dangerousstonecutter.option.damage": "ダメージ量",
   "text.autoconfig.dangerousstonecutter.option.enableMobAvoidStonecutter": "mobが石切り台を避けるようにする",
