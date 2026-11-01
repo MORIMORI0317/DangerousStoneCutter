@@ -8,5 +8,6 @@ jobs:
     uses: TeamFelnull/actions-reusable-workflows/.github/workflows/mcmod-preview-build.yml@master
     with:
       build_tasks: "build"
+      java_version: 25
     secrets:
       maven_password: ""
