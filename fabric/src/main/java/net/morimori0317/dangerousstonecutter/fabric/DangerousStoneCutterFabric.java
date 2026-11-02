@@ -13,22 +13,29 @@ public final class DangerousStoneCutterFabric implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        updateConfig();
         DangerousStoneCutter.init();
         DSCPacketsFabric.init();
     }
 
-    public static DSCConfig getConfig() {
-
+    private static void updateConfig() {
         if (!CONFIG_INIT) {
             CONFIG_INIT = true;
 
-            if (FabricLoader.getInstance().isModLoaded("cloth-config")) {
+            if (isClothConfigLoaded()) {
                 CONFIG = DSCConfigFabric.createConfig();
             } else {
                 CONFIG = DSCConfig.DEFAULT;
             }
         }
+    }
 
+    public static DSCConfig getConfig() {
+        updateConfig();
         return CONFIG;
+    }
+
+    public static boolean isClothConfigLoaded() {
+        return FabricLoader.getInstance().isModLoaded("cloth-config");
     }
 }

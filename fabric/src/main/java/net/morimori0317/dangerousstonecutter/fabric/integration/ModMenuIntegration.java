@@ -13,7 +13,7 @@ public class ModMenuIntegration implements ModMenuApi {
 
     @Override
     public ConfigScreenFactory<?> getModConfigScreenFactory() {
-        if (DangerousStoneCutterFabric.getConfig() instanceof DSCConfigFabric) {
+        if (DangerousStoneCutterFabric.isClothConfigLoaded()) {
             return DSCClientConfigFabric::createConfigScreen;
         }
         return ModMenuApi.super.getModConfigScreenFactory();
