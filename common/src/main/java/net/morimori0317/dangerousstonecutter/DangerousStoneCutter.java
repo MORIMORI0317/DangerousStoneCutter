@@ -20,18 +20,18 @@ import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.animal.allay.Allay;
 import net.minecraft.world.entity.animal.bee.Bee;
 import net.minecraft.world.entity.animal.equine.SkeletonHorse;
+import net.minecraft.world.entity.animal.golem.CopperGolem;
 import net.minecraft.world.entity.animal.golem.IronGolem;
 import net.minecraft.world.entity.animal.golem.SnowGolem;
+import net.minecraft.world.entity.animal.happyghast.HappyGhast;
 import net.minecraft.world.entity.boss.enderdragon.EnderDragon;
 import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.item.FallingBlockEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.monster.*;
 import net.minecraft.world.entity.monster.breeze.Breeze;
-import net.minecraft.world.entity.monster.skeleton.Bogged;
-import net.minecraft.world.entity.monster.skeleton.Skeleton;
-import net.minecraft.world.entity.monster.skeleton.Stray;
-import net.minecraft.world.entity.monster.skeleton.WitherSkeleton;
+import net.minecraft.world.entity.monster.creaking.Creaking;
+import net.minecraft.world.entity.monster.skeleton.*;
 import net.minecraft.world.entity.monster.spider.Spider;
 import net.minecraft.world.entity.monster.warden.Warden;
 import net.minecraft.world.entity.player.Player;
@@ -131,8 +131,6 @@ public final class DangerousStoneCutter {
             return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.AMETHYST_BLOCK.defaultBlockState());
         } else if (entity instanceof Bee) {
             return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.HONEYCOMB_BLOCK.defaultBlockState());
-        } else if (entity instanceof Skeleton || entity instanceof SkeletonHorse || entity instanceof Bogged || entity instanceof Stray) {
-            return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.BONE_BLOCK.defaultBlockState());
         } else if (entity instanceof Breeze) {
             return new ItemParticleOption(ParticleTypes.ITEM, Items.WIND_CHARGE);
         } else if (entity instanceof Spider) {
@@ -149,10 +147,18 @@ public final class DangerousStoneCutter {
             return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.SCULK.defaultBlockState());
         } else if (entity instanceof WitherSkeleton || entity instanceof WitherBoss) {
             return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.COAL_BLOCK.defaultBlockState());
+        } else if (entity instanceof SkeletonHorse || entity instanceof AbstractSkeleton) {
+            return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.BONE_BLOCK.defaultBlockState());
         } else if (entity instanceof MagmaCube || entity instanceof Blaze) {
             return ParticleTypes.FLAME;
         } else if (entity instanceof Slime) {
             return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.SLIME_BLOCK.defaultBlockState());
+        } else if (entity instanceof Creaking) {
+            return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.CREAKING_HEART.defaultBlockState());
+        } else if (entity instanceof CopperGolem) {
+            return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.COPPER_BLOCK.defaultBlockState());
+        } else if (entity instanceof Ghast || entity instanceof HappyGhast) {
+            return new BlockParticleOption(ParticleTypes.BLOCK, Blocks.WHITE_WOOL.defaultBlockState());
         } else if (entity instanceof ItemEntity itemEntity) {
             if (!itemEntity.getItem().isEmpty()) {
                 return new ItemParticleOption(ParticleTypes.ITEM, ItemStackTemplate.fromNonEmptyStack(itemEntity.getItem()));
