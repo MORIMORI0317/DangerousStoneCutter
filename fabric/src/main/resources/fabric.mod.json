@@ -19,6 +19,9 @@
     "main": [
       "net.morimori0317.dangerousstonecutter.fabric.DangerousStoneCutterFabric"
     ],
+    "client": [
+      "net.morimori0317.dangerousstonecutter.fabric.client.DangerousStoneCutterFabricClient"
+    ],
     "modmenu": [
       "net.morimori0317.dangerousstonecutter.fabric.integration.ModMenuIntegration"
     ]
