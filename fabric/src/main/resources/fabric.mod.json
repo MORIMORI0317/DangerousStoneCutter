@@ -30,7 +30,7 @@
     "dangerousstonecutter.mixins.json"
   ],
   "depends": {
-    "minecraft": ">=26.1.2",
+    "minecraft": "~26.1.2",
     "fabric-api": "*"
   },
   "custom": {

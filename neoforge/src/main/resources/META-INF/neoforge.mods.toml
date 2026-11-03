@@ -29,7 +29,7 @@ side = "BOTH"
 [[dependencies.dangerousstonecutter]]
 modId = "minecraft"
 type = "required"
-versionRange = "[26.1.2,)"
+versionRange = "[26.1.2]"
 ordering = "NONE"
 side = "BOTH"
 
